@@ -5,16 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SK*S | Official Label</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap');
         
         :root {
             --bg-color: #000000;
             --pure-black: #050505;
-            --accent-pale-yellow: #f4efd3;
+            --pale-yellow: #f4efd3;
             --pale-white: #e8e8e8;
-            --gray-mid: #777777;
-            --gray-dark: #121212;
-            --card-bg: rgba(12, 12, 12, 0.85);
+            --gray-mid: #666666;
+            --gray-dark: #111111;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -32,295 +31,181 @@
             padding: 20px;
         }
 
-        /* Интерактивный канвас для дымки исключительно в разрешенных тонах */
-        #effect-canvas {
+        /* Текстурный фон под бетон из видео */
+        .concrete-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000000 100%);
             z-index: 0;
-            pointer-events: none;
+            opacity: 0.9;
         }
 
-        /* Настоящая объемная дымка на фоне (только черный, серый, бледный желтый и бледный белый) */
+        /* Настоящая монохромная дымка (только черный, серый, бледно-белый, бледно-желтый) */
         .volumetric-smoke {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: 0;
             pointer-events: none;
             background: 
-                radial-gradient(circle at 50% 30%, rgba(244, 239, 211, 0.12) 0%, transparent 40%),
-                radial-gradient(circle at 30% 60%, rgba(119, 119, 119, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 70% 70%, rgba(232, 232, 232, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, #050505 0%, #000000 100%);
-            filter: blur(80px);
-            opacity: 0.9;
-            animation: smokeDrift 16s ease-in-out infinite alternate;
+                radial-gradient(circle at 50% 20%, rgba(244, 239, 211, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 30% 70%, rgba(102, 102, 102, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(232, 232, 232, 0.05) 0%, transparent 45%);
+            filter: blur(90px);
+            opacity: 0.8;
+            animation: smokeDrift 14s ease-in-out infinite alternate;
         }
 
         @keyframes smokeDrift {
-            0% { transform: scale(1) translate(0, 0) rotate(0deg); }
-            50% { transform: scale(1.12) translate(-25px, 15px) rotate(2deg); }
-            100% { transform: scale(1.04) translate(20px, -10px) rotate(-2deg); }
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.1) translate(-20px, 15px); }
         }
 
         .container {
-            max-width: 600px;
+            max-width: 580px;
             width: 100%;
             z-index: 1;
-            padding: 50px 30px;
+            padding: 45px 30px;
             text-align: center;
-            background: rgba(8, 8, 8, 0.8);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border-radius: 40px;
-            border: 1px solid rgba(119, 119, 119, 0.3);
-            box-shadow: 0 35px 80px rgba(0,0,0,0.95), 0 0 40px rgba(244, 239, 211, 0.04);
-            animation: fadeIn 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(102, 102, 102, 0.3);
+            box-shadow: 0 30px 70px rgba(0,0,0,0.9);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); scale: 0.95; }
-            to { opacity: 1; transform: translateY(0); scale: 1; }
+        /* Тот самый тяжелый индустриальный шрифт из видео для заголовков */
+        .video-title-font {
+            font-family: 'Anton', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 0.95;
         }
 
-        /* УНИКАЛЬНОЕ ОБЪЕМНОЕ СВЕЧЕНИЕ ЛОГОТИПА С ЭФФЕКТОМ ГОРЯЩЕГО ДЫМА */
         .logo-container {
             margin-bottom: 25px;
             position: relative;
             display: inline-block;
         }
 
-        /* Дымный ореол вокруг логотипа в палитре: бледный желтый, серый, белый */
+        /* Дымный ореол строго в разрешенных тонах вокруг логотипа */
         .logo-container::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 180px;
-            height: 180px;
-            background: radial-gradient(circle, rgba(244, 239, 211, 0.35) 0%, rgba(119, 119, 119, 0.2) 45%, transparent 75%);
+            width: 160px; height: 160px;
+            background: radial-gradient(circle, rgba(244, 239, 211, 0.25) 0%, rgba(102, 102, 102, 0.2) 50%, transparent 75%);
             border-radius: 50%;
             z-index: -1;
-            filter: blur(22px);
-            animation: logoSmokePulse 5s ease-in-out infinite alternate;
+            filter: blur(18px);
+            animation: pulseSmoke 4s ease-in-out infinite alternate;
         }
 
-        @keyframes logoSmokePulse {
-            0% { transform: translate(-50%, -50%) scale(0.85) rotate(0deg); opacity: 0.4; }
-            100% { transform: translate(-50%, -50%) scale(1.3) rotate(180deg); opacity: 0.85; }
+        @keyframes pulseSmoke {
+            0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.5; }
+            100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.9; }
         }
 
         .logo-container img {
-            max-width: 160px;
+            max-width: 150px;
             height: auto;
-            /* Перевод логотипа в строго разрешенные цвета (белый/серый/бледно-желтый через тени) */
-            filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(244, 239, 211, 0.7)) drop-shadow(0 0 25px rgba(119, 119, 119, 0.5));
-            animation: logoFloat 6s ease-in-out infinite alternate;
+            filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(232, 232, 232, 0.4));
         }
 
-        @keyframes logoFloat {
-            0% { transform: translateY(0) scale(1); filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(244, 239, 211, 0.7)) drop-shadow(0 0 25px rgba(119, 119, 119, 0.5)); }
-            100% { transform: translateY(-8px) scale(1.04); filter: brightness(0) invert(1) drop-shadow(0 0 15px rgba(244, 239, 211, 0.9)) drop-shadow(0 0 35px rgba(119, 119, 119, 0.7)); }
-        }
-
-        h1 {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(3rem, 10vw, 4rem);
+        /* Крупный текст в стиле видео: SK*S MERCH FAMILY */
+        .hero-heading {
+            font-size: clamp(3.2rem, 9vw, 4.5rem);
             color: var(--pale-white);
-            letter-spacing: 12px;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            text-shadow: 0 0 25px rgba(232, 232, 232, 0.25);
+            margin-bottom: 10px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
         }
 
-        h2 {
-            font-weight: 300;
-            font-size: 0.9rem;
-            letter-spacing: 6px;
+        .hero-subheading {
+            font-size: clamp(1.8rem, 5vw, 2.6rem);
             color: var(--gray-mid);
-            margin-bottom: 40px;
-            text-transform: uppercase;
+            margin-bottom: 30px;
         }
 
         p {
-            line-height: 1.8;
-            margin-bottom: 25px;
-            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
             color: var(--pale-white);
-            opacity: 0.85;
+            opacity: 0.8;
         }
 
         .date {
-            color: var(--accent-pale-yellow);
+            color: var(--pale-yellow);
             font-weight: 700;
-            font-size: 1.2rem;
-            text-shadow: 0 0 15px rgba(244, 239, 211, 0.4);
+            letter-spacing: 1px;
         }
 
         .event-box {
             background: var(--gray-dark);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 40px 0;
-            border: 1px solid rgba(119, 119, 119, 0.35);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .event-box::before {
-            content: '';
-            position: absolute;
-            top: -2px; left: -2px; right: -2px; bottom: -2px;
-            border-radius: 26px;
-            background: linear-gradient(45deg, var(--accent-pale-yellow), var(--gray-mid), var(--accent-pale-yellow));
-            z-index: -1;
-            opacity: 0.3;
-            animation: borderAnim 8s linear infinite;
-        }
-
-        @keyframes borderAnim {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+            border: 1px solid rgba(102, 102, 102, 0.25);
         }
 
         .tg-button {
             display: inline-block;
-            margin-top: 20px;
-            padding: 18px 40px;
+            margin-top: 15px;
+            padding: 16px 35px;
             background: var(--pale-white);
             color: var(--bg-color);
             text-decoration: none;
-            font-weight: 700;
-            border-radius: 50px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.9rem;
+            font-family: 'Anton', sans-serif;
+            letter-spacing: 2px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
             width: 100%;
-            max-width: 320px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tg-button::after {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%; width: 200%; height: 200%;
-            background: linear-gradient(60deg, transparent, rgba(244, 239, 211, 0.4), transparent);
-            transform: rotate(45deg) translateX(-100%);
-            transition: 0.6s;
-        }
-
-        .tg-button:hover::after {
-            transform: rotate(45deg) translateX(100%);
+            max-width: 300px;
         }
 
         .tg-button:hover {
-            background: var(--accent-pale-yellow);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(244, 239, 211, 0.3);
+            background: var(--pale-yellow);
+            box-shadow: 0 0 20px rgba(244, 239, 211, 0.2);
+            transform: translateY(-2px);
         }
 
         footer {
-            margin-top: 50px;
+            margin-top: 40px;
             font-size: 0.7rem;
             color: var(--gray-mid);
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
         }
     </style>
 </head>
 <body>
+    <div class="concrete-bg"></div>
     <div class="volumetric-smoke"></div>
-    <canvas id="effect-canvas"></canvas>
 
     <div class="container">
         <div class="logo-container">
             <img src="IMG_0128.png" alt="SK*S Logo">
         </div>
-        <h1>SK*S</h1>
-        <h2>Лейбл-бренд от семьи Поднебесье</h2>
+        
+        <!-- Заголовки точь-в-точь со шрифтом и стилем из видео -->
+        <h1 class="hero-heading video-title-font">SK*S</h1>
+        <h2 class="hero-subheading video-title-font">MERCH FAMILY</h2>
         
         <p>Наша команда создала концепт, объединяющий эстетику уличного стрит-стайла и комфорт премиального хлопка. Это не просто одежда — это принадлежность к сообществу.</p>
         
         <p>Вещи от лейбла SK*S уникальны: они доступны только через закрытые розыгрыши. Отмечаем третью годовщину семьи первым эксклюзивным дропом: <span class="date">12.10.26</span>.</p>
         
         <div class="event-box">
-            <p>В будущих коллекциях SK*S мы планируем расширить линейку аксессуаров и кастомных элементов, доступных исключительно для активных участников наших пространств.</p>
+            <p style="margin-bottom: 0;">В будущих коллекциях SK*S мы планируем расширить линейку аксессуаров и кастомных элементов, доступных исключительно для активных участников.</p>
         </div>
 
         <a href="https://t.me/skyline_fm" class="tg-button">Перейти на пост</a>
         
         <footer>
-            SK*S OFFICIAL LABEL
+            @SKYLINEFM • OFFICIAL LABEL
         </footer>
     </div>
-
-    <script>
-        const canvas = document.getElementById('effect-canvas');
-        const ctx = canvas.getContext('2d');
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-
-        // Дымные облака на canvas строго в разрешенных тонах (бледно-желтый, серый, белый, черный)
-        const particles = [];
-        const count = 35;
-
-        class SmokeParticle {
-            constructor() {
-                this.reset();
-            }
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = canvas.height + Math.random() * 100;
-                this.size = Math.random() * 50 + 20;
-                this.speedY = -(Math.random() * 0.7 + 0.2);
-                this.speedX = (Math.random() - 0.5) * 0.3;
-                this.opacity = Math.random() * 0.12 + 0.02;
-                this.grow = Math.random() * 0.08 + 0.01;
-            }
-            update() {
-                this.y += this.speedY;
-                this.x += this.speedX + Math.sin(this.y * 0.01) * 0.2;
-                this.size += this.grow;
-                if (this.y < -50 || this.opacity <= 0) {
-                    this.reset();
-                }
-            }
-            draw() {
-                ctx.save();
-                ctx.beginPath();
-                let gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
-                gradient.addColorStop(0, `rgba(244, 239, 211, ${this.opacity * 1.2})`); // бледно-желтый
-                gradient.addColorStop(0.5, `rgba(119, 119, 119, ${this.opacity})`); // серый
-                gradient.addColorStop(1, 'transparent');
-                ctx.fillStyle = gradient;
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.restore();
-            }
-        }
-
-        for (let i = 0; i < count; i++) {
-            let p = new SmokeParticle();
-            p.y = Math.random() * canvas.height;
-            particles.push(p);
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            requestAnimationFrame(animate);
-        }
-        animate();
-    </script>
 </body>
 </html>
