@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SK*S | Official Label</title>
+    <title>SK*S | A Sword in A Sheep</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap');
         
         :root {
-            --bg-color: #000000;
-            --pure-black: #050505;
+            --bg-color: #3b3d40; /* Цвет фона взят с обложки */
             --pale-yellow: #f4efd3;
             --pale-white: #e8e8e8;
-            --gray-mid: #666666;
-            --gray-dark: #111111;
+            --gray-mid: #888888;
+            --gray-dark: #25272a;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,25 +30,22 @@
             padding: 20px;
         }
 
-        /* Текстурный фон под бетон из видео */
+        /* Атмосферный градиент на основе обложки */
         .concrete-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000000 100%);
+            background: radial-gradient(circle at 50% 30%, #52555a 0%, #2c2e32 100%);
             z-index: 0;
-            opacity: 0.9;
         }
 
-        /* Настоящая монохромная дымка (только черный, серый, бледно-белый, бледно-желтый) */
         .volumetric-smoke {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: 0;
             pointer-events: none;
             background: 
-                radial-gradient(circle at 50% 20%, rgba(244, 239, 211, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 30% 70%, rgba(102, 102, 102, 0.12) 0%, transparent 50%),
-                radial-gradient(circle at 70% 60%, rgba(232, 232, 232, 0.05) 0%, transparent 45%);
+                radial-gradient(circle at 50% 20%, rgba(244, 239, 211, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 30% 70%, rgba(136, 136, 136, 0.08) 0%, transparent 50%);
             filter: blur(90px);
             opacity: 0.8;
             animation: smokeDrift 14s ease-in-out infinite alternate;
@@ -66,15 +62,14 @@
             z-index: 1;
             padding: 45px 30px;
             text-align: center;
-            background: rgba(10, 10, 10, 0.85);
+            background: rgba(35, 37, 40, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-radius: 20px;
-            border: 1px solid rgba(102, 102, 102, 0.3);
-            box-shadow: 0 30px 70px rgba(0,0,0,0.9);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 30px 70px rgba(0,0,0,0.6);
         }
 
-        /* Индустриальный шрифт из видео для всех заголовков */
         .video-title-font {
             font-family: 'Anton', sans-serif;
             text-transform: uppercase;
@@ -83,59 +78,46 @@
         }
 
         .logo-container {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             position: relative;
             display: inline-block;
         }
 
-        /* Дымный ореол строго в разрешенных тонах вокруг логотипа */
         .logo-container::before {
             content: '';
             position: absolute;
             top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 160px; height: 160px;
-            background: radial-gradient(circle, rgba(244, 239, 211, 0.25) 0%, rgba(102, 102, 102, 0.2) 50%, transparent 75%);
+            width: 180px; height: 180px;
+            background: radial-gradient(circle, rgba(244, 239, 211, 0.15) 0%, transparent 70%);
             border-radius: 50%;
             z-index: -1;
-            filter: blur(18px);
-            animation: pulseSmoke 4s ease-in-out infinite alternate;
+            filter: blur(20px);
         }
 
-        @keyframes pulseSmoke {
-            0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.5; }
-            100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.9; }
-        }
-
-        .logo-container img {
-            max-width: 150px;
+        /* Стиль для обложки/логотипа из картинки */
+        .cover-img {
+            max-width: 200px;
+            width: 100%;
             height: auto;
-            filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(232, 232, 232, 0.4));
+            border-radius: 50%;
+            border: 2px solid rgba(244, 239, 211, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        /* Точный шрифт Anton для «ДЕБЮТ БРЕНДА» с отступом снизу */
-        .hero-debut {
-            font-family: 'Anton', sans-serif;
-            font-size: clamp(1.6rem, 4.5vw, 2.2rem);
-            color: var(--pale-white);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
-        }
-
-        /* Крупный текст в стиле видео: SK*S MERCH FAMILY */
         .hero-heading {
-            font-size: clamp(3.2rem, 9vw, 4.5rem);
+            font-size: clamp(2.8rem, 8vw, 4rem);
             color: var(--pale-white);
-            margin-bottom: 10px;
+            margin-top: 15px;
+            margin-bottom: 5px;
             text-shadow: 0 4px 15px rgba(0,0,0,0.8);
         }
 
         .hero-subheading {
-            font-size: clamp(1.8rem, 5vw, 2.6rem);
-            color: var(--gray-mid);
-            margin-bottom: 30px;
+            font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+            color: var(--pale-yellow);
+            margin-bottom: 25px;
+            letter-spacing: 3px;
         }
 
         p {
@@ -143,26 +125,38 @@
             margin-bottom: 20px;
             font-size: 0.95rem;
             color: var(--pale-white);
-            opacity: 0.8;
+            opacity: 0.85;
+        }
+
+        /* Рамочка для даты релиза */
+        .release-box {
+            display: inline-block;
+            border: 1px solid var(--pale-yellow);
+            padding: 10px 25px;
+            border-radius: 6px;
+            margin: 15px 0 25px 0;
+            background: rgba(0,0,0,0.2);
         }
 
         .date {
             color: var(--pale-yellow);
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            font-size: 1.1rem;
+            font-family: 'Anton', sans-serif;
         }
 
         .event-box {
             background: var(--gray-dark);
-            padding: 25px;
+            padding: 20px;
             border-radius: 12px;
-            margin: 30px 0;
-            border: 1px solid rgba(102, 102, 102, 0.25);
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .tg-button {
             display: inline-block;
-            margin-top: 15px;
+            margin-top: 10px;
             padding: 16px 35px;
             background: var(--pale-white);
             color: var(--bg-color);
@@ -178,12 +172,12 @@
 
         .tg-button:hover {
             background: var(--pale-yellow);
-            box-shadow: 0 0 20px rgba(244, 239, 211, 0.2);
+            box-shadow: 0 0 20px rgba(244, 239, 211, 0.3);
             transform: translateY(-2px);
         }
 
         footer {
-            margin-top: 40px;
+            margin-top: 35px;
             font-size: 0.7rem;
             color: var(--gray-mid);
             text-transform: uppercase;
@@ -196,26 +190,27 @@
     <div class="volumetric-smoke"></div>
 
     <div class="container">
+        <!-- Вставляем обложку-логотип из предоставленного файла -->
         <div class="logo-container">
-            <img src="IMG_0128.png" alt="SK*S Logo">
+            <img src="IMG_3643.JPEG" alt="A Sword in A Sheep Cover" class="cover-img">
         </div>
         
-        <!-- Гарантированно тот же шрифт Anton и отступ снизу -->
-        <div class="hero-debut">ДЕБЮТ БРЕНДА</div>
-        
-        <!-- Заголовки со стилем из видео -->
+        <!-- Заголовки новой коллекции -->
         <h1 class="hero-heading video-title-font">SK*S</h1>
-        <h2 class="hero-subheading video-title-font">MERCH FAMILY</h2>
+        <h2 class="hero-subheading video-title-font">A Sword in A Sheep</h2>
         
-        <p>Наша команда создала концепт, объединяющий эстетику уличного стрит-стайла и комфорт премиального хлопка. Это не просто одежда — это принадлежность к сообществу.</p>
+        <p>Новая глава лейбла. Концептуальная коллекция, вдохновленная глубиной символизма, чистыми силуэтами и бескомпромиссным качеством.</p>
         
-        <p>Вещи от лейбла SK*S уникальны: они доступны только через закрытые розыгрыши. Отмечаем третью годовщину семьи первым эксклюзивным дропом: <span class="date">12.10.26</span>.</p>
+        <!-- Рамочка с датой релиза -->
+        <div class="release-box">
+            <span class="date">РЕЛИЗ: 25.09.26</span>
+        </div>
         
         <div class="event-box">
-            <p style="margin-bottom: 0;">В будущих коллекциях SK*S мы планируем расширить линейку аксессуаров и кастомных элементов, доступных исключительно для активных участников.</p>
+            <p style="margin-bottom: 0;">Лимитированный дроп будет доступен эксклюзивное время для участников сообщества.</p>
         </div>
 
-        <a href="https://t.me/skyline_fm" class="tg-button">Перейти на пост</a>
+        <a href="https://t.me/skyline_fm" class="tg-button">Перейти к релизу</a>
         
         <footer>
             @SKYLINEFM • OFFICIAL LABEL
