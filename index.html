@@ -93,7 +93,7 @@
             filter: blur(20px);
         }
 
-        /* Идеально ровный круг для обложки */
+        /* 1 файл — Овца (круглый формат) */
         .cover-img {
             width: 220px;
             height: 220px;
@@ -116,16 +116,23 @@
         .hero-subheading {
             font-size: clamp(1.2rem, 3.5vw, 1.6rem);
             color: var(--pale-yellow);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             letter-spacing: 3px;
         }
 
-        p {
-            line-height: 1.7;
-            margin-bottom: 25px;
-            font-size: 0.95rem;
-            color: var(--pale-white);
-            opacity: 0.85;
+        /* 2 файл — Фото с текстом вместо текстового блока */
+        .text-image-container {
+            margin: 20px auto 25px auto;
+            max-width: 100%;
+        }
+
+        .text-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .release-box {
@@ -181,7 +188,7 @@
     <div class="volumetric-smoke"></div>
 
     <div class="container">
-        <!-- Обложка с новым именем файла и выровненная по кругу -->
+        <!-- 1 файл: Овца (IMG_7743.jpeg) -->
         <div class="logo-container">
             <img src="IMG_7743.jpeg" alt="A Sword in A Sheep Cover" class="cover-img">
         </div>
@@ -189,7 +196,10 @@
         <h1 class="hero-heading video-title-font">SK*S</h1>
         <h2 class="hero-subheading video-title-font">A Sword in A Sheep</h2>
         
-        <p>Новая глава лейбла. Концептуальная коллекция, вдохновленная глубиной символизма, чистыми силуэтами и бескомпромиссным качеством.</p>
+        <!-- 2 файл: Фото с текстом (IMG_7754.png) вместо обычного текста -->
+        <div class="text-image-container">
+            <img src="IMG_7754.png" alt="Release Information">
+        </div>
         
         <div class="release-box">
             <span class="date">РЕЛИЗ: 25.09.26</span>
