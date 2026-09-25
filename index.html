@@ -105,7 +105,7 @@
             margin: 0 auto;
         }
 
-        /* 2 файл: PNG-логотип с компенсацией смещения влево */
+        /* 2 файл: PNG-логотип со значительным сдвигом вправо для точной центровки */
         .png-logo-container {
             margin: 15px auto 10px auto;
             max-width: 260px;
@@ -119,8 +119,7 @@
             width: 100%;
             height: auto;
             display: block;
-            /* Компенсируем внутреннее смещение файла вправо */
-            transform: translateX(12px);
+            transform: translateX(35px); /* Увеличили смещение вправо */
             filter: drop-shadow(0 4px 12px rgba(0,0,0,0.6));
         }
 
@@ -197,9 +196,9 @@
             <img src="IMG_7743.jpeg" alt="Cover" class="cover-img">
         </div>
         
-        <!-- 2 файл: Ваш PNG ровно по центру (IMG_7754.png) -->
+        <!-- 2 файл: Ваш PNG по центру (IMG_7754.png сбросом кеша ?v=2) -->
         <div class="png-logo-container">
-            <img src="IMG_7754.png" alt="Logo">
+            <img src="IMG_7754.png?v=2" alt="Logo">
         </div>
 
         <h2 class="hero-subheading video-title-font">A Sword in A Sheep</h2>
