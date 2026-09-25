@@ -105,7 +105,7 @@
             margin: 0 auto;
         }
 
-        /* 2 файл: PNG-логотип (строго по центру без смещений) */
+        /* 2 файл: PNG-логотип с компенсацией смещения влево */
         .png-logo-container {
             margin: 15px auto 10px auto;
             max-width: 260px;
@@ -119,7 +119,8 @@
             width: 100%;
             height: auto;
             display: block;
-            margin: 0 auto;
+            /* Компенсируем внутреннее смещение файла вправо */
+            transform: translateX(12px);
             filter: drop-shadow(0 4px 12px rgba(0,0,0,0.6));
         }
 
@@ -196,7 +197,7 @@
             <img src="IMG_7743.jpeg" alt="Cover" class="cover-img">
         </div>
         
-        <!-- 2 файл: Ваш PNG по центру (IMG_7754.png) -->
+        <!-- 2 файл: Ваш PNG ровно по центру (IMG_7754.png) -->
         <div class="png-logo-container">
             <img src="IMG_7754.png" alt="Logo">
         </div>
@@ -206,7 +207,7 @@
         <p>Новая глава для лейбла. Концептуальная коллекция, вдохновленная глубиной символизма, чистыми силуэтами и бескомпромиссным качеством.</p>
         
         <div class="release-box">
-            <span class="date">РЕЛИЗ: 25.09.26</span>
+            <span class="date">РЕЛИЗ: 12.10.26</span>
         </div>
 
         <a href="https://t.me/skyline_fm" class="tg-button">Перейти к релизу</a>
